@@ -36,13 +36,13 @@ export default class UserController {
 
       @Post('/users')
       @HttpCode(201)
-      createUser(
+      async publicreateUser(
         @Body() user: User
       ) {
-        return user.save()
+        const {password, ...rest} = user
+        const entity = User.create(rest)
+        await entity.setPassword(password)
+        return entity.save()
       }
-
-
-
 
 }
