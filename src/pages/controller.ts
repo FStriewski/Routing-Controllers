@@ -42,8 +42,9 @@ export default class PageController {
       @Post('/pages')
       @HttpCode(201)
       createPage(
+        // as page arg is typed Page class is looked up for validation.
         @Body() page: Page
       ) {
-        return page.save()
+        return page.save() // Save sends it to the DB
       }
 }
