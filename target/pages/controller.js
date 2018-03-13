@@ -46,6 +46,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PageController.prototype, "allPages", null);
 __decorate([
+    routing_controllers_1.Authorized(),
     routing_controllers_1.Put('/pages/:id'),
     __param(0, routing_controllers_1.Param('id')),
     __param(1, routing_controllers_1.Body()),
@@ -54,6 +55,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PageController.prototype, "updatePage", null);
 __decorate([
+    routing_controllers_1.Authorized(),
     routing_controllers_1.Post('/pages'),
     routing_controllers_1.HttpCode(201),
     __param(0, routing_controllers_1.Body()),

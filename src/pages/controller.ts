@@ -1,7 +1,9 @@
 // src/pages/controller.ts
-import { JsonController, Get, Put, Param, Body, Post, HttpCode, NotFoundError  } from 'routing-controllers'
+import { JsonController, Get, Put, Param, Body, Post, HttpCode, NotFoundError, Authorized  } from 'routing-controllers'
 
 import Page from './entity'
+
+
 
 type PageList = { pages: Page[] }
 
@@ -28,6 +30,7 @@ export default class PageController {
         return { pages }
       }
 
+    @Authorized() // Remove to allow unauthorized modifications
       @Put('/pages/:id')
       async updatePage(
           @Param('id') id: number,
@@ -39,6 +42,7 @@ export default class PageController {
         return Page.merge(page, update).save()
       }
 
+      @Authorized()
       @Post('/pages')
       @HttpCode(201)
       createPage(
